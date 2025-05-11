@@ -1,0 +1,146 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.login-form input,
+.login-form button {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.login-form button {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}
+
+.login-form button:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  color: red;
+  margin-bottom: 15px;
+}
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.register-form input,
+.register-form button {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.register-form button {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}
+
+.register-form button:hover {
+  background-color: #0056b3;
+}
+
+.success {
+  color: green;
+  margin-bottom: 15px;
+}
+
+.error {
+  color: red;
+  margin-bottom: 15px;
+}
+
+.dashboard-container {
+  padding: 20px;
+}
+
+.filters input {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.transactions {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.transaction {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.pagination button {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+svg {
+  width: 400px;
+  height: 400px;
+  margin: 20px auto;
+}
+
+.arc path {
+  transition: 0.3s;
+}
+
+.arc path:hover {
+  opacity: 0.8;
+}
