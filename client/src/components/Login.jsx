@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  Box,
+  TextField,
+  Button,
+  Snackbar,
+  Alert,
+  Typography,
+} from "@mui/material";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -19,30 +28,71 @@ const Login = () => {
       navigate("/dashboard");
     } catch (err) {
       setError("Invalid username or password");
+      setOpen(true);
       console.error("Login error:", err);
     }
   };
 
+  const handleClose = () => {
+    setOpen(false);
+    setError("");
+  };
+
   return (
-    <div className="login-container">
-      <form onSubmit={handleLogin} className="login-form">
-        <h2>Login</h2>
-        {error && <p className="error">{error}</p>}
-        <input
-          type="text"
-          placeholder="Username"
+    <Box
+      sx={{
+        width: "100%",
+        maxWidth: 400,
+        margin: "0 auto",
+        padding: 3,
+        backgroundColor: "#f9f9f9",
+        borderRadius: 2,
+        boxShadow: 3,
+        mt: 8,
+      }}
+    >
+      <Typography variant="h4" align="center" sx={{ mb: 3 }}>
+        Login
+      </Typography>
+
+      <form onSubmit={handleLogin}>
+        <TextField
+          fullWidth
+          variant="outlined"
+          label="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          sx={{ mb: 2 }}
+          required
         />
-        <input
+
+        <TextField
+          fullWidth
+          variant="outlined"
+          label="Password"
           type="password"
-          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          sx={{ mb: 2 }}
+          required
         />
-        <button type="submit">Login</button>
+
+        <Button type="submit" variant="contained" fullWidth>
+          Login
+        </Button>
       </form>
-    </div>
+      <Typography variant="body2" align="center" sx={{ mt: 2 }}>
+        Don't have an account?{" "}
+        <Link to="/register" style={{ color: "#1976d2", textDecoration: "none" }}>
+          Register here
+        </Link>
+      </Typography>
+      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} sx={{margin:0}}>
+        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+          {error}
+        </Alert>
+      </Snackbar>
+    </Box>
   );
 };
 

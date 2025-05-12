@@ -13,6 +13,10 @@ const getBudgetByUserId = async (req, res) => {
 const setNewBudget = async (req, res) => {
   try {
     const { amount } = req.body;
+    if (amount < 0) {
+      return res.status(400).json({ error: "Budget cannot be negative" });
+    }
+    
     let budget = await Budget.findOne({ userId: req.userId });
     if (budget) {
       budget.amount = amount;

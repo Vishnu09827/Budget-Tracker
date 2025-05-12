@@ -144,3 +144,97 @@ svg {
 .arc path:hover {
   opacity: 0.8;
 }
+
+.budget-manager {
+  margin-bottom: 20px;
+}
+
+.budget-manager input {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.budget-manager button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.budget-manager button:hover {
+  background-color: #0056b3;
+}
+
+.budget-manager .message {
+  color: green;
+  margin-top: 10px;
+}
+
+.add-transaction-form {
+  margin-bottom: 20px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.add-transaction-form input,
+.add-transaction-form select {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 80%;
+}
+
+.add-transaction-form button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 85%;
+}
+
+.add-transaction-form button:hover {
+  background-color: #0056b3;
+}
+
+.add-transaction-form .message {
+  color: green;
+  margin-top: 10px;
+}
+
+.transaction input {
+  margin: 5px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.transaction button {
+  margin: 5px;
+  padding: 8px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.transaction button:hover {
+  background-color: #0056b3;
+}
+
+.transaction button.cancel {
+  background-color: #f44336;
+}
+
+.transaction button.cancel:hover {
+  background-color: #d32f2f;
+}

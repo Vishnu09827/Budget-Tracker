@@ -19,8 +19,8 @@ const login = async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
-    const isModified = user.comparePassword(password);
-
+    const isModified =await user.comparePassword(password);
+    console.log(isModified)
     if (!user || !isModified) {
       return res.status(401).json({ error: "Invalid username or password" });
     }

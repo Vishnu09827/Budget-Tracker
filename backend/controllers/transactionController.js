@@ -36,6 +36,9 @@ const getAllTransaction = async (req, res) => {
 const addNewTransaction = async (req, res) => {
   try {
     const { type, amount, category } = req.body;
+    if (!type || !amount || !category) {
+      return res.status(400).json({ error: "All fields are required" });
+    }
     const transaction = new Transaction({
       userId: req.userId,
       type,
@@ -50,4 +53,51 @@ const addNewTransaction = async (req, res) => {
   }
 };
 
-module.exports = { getAllTransaction, addNewTransaction };
+const updateTransaction = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { type, amount, category } = req.body;
+
+    const transaction = await Transaction.findOneAndUpdate(
+      { _id: id, userId: req.userId },
+      { type, amount, category },
+      { new: true }
+    );
+
+    if (!transaction) {
+      return res.status(404).json({ error: "Transaction not found" });
+    }
+
+    res.json(transaction);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to update transaction" });
+  }
+};
+
+const deleteTransaction = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const transaction = await Transaction.findOneAndDelete({
+      _id: id,
+      userId: req.userId,
+    });
+
+    if (!transaction) {
+      return res.status(404).json({ error: "Transaction not found" });
+    }
+
+    res.json({ message: "Transaction deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to delete transaction" });
+  }
+};
+
+module.exports = {
+  getAllTransaction,
+  addNewTransaction,
+  updateTransaction,
+  deleteTransaction,
+};
