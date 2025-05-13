@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { api } from "../api/axios";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Box,
@@ -21,7 +21,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/auth/register", {
+      await api.post("http://localhost:5000/api/auth/register", {
         username,
         password,
       });

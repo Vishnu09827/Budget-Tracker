@@ -20,8 +20,8 @@ const login = async (req, res) => {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
     const isModified =await user.comparePassword(password);
-    console.log(isModified)
-    if (!user || !isModified) {
+
+    if (!user || isModified) {
       return res.status(401).json({ error: "Invalid username or password" });
     }
     const token = jwt.sign({ userId: user._id }, JWT_SECRET, {

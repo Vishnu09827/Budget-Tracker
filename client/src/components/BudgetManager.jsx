@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { api } from "../api/axios";
 import {
   Box,
   TextField,
@@ -29,7 +29,7 @@ const BudgetManager = ({ setBudget, budget }) => {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.post(
+      const res = await api.post(
         "http://localhost:5000/api/budget",
         { amount: newBudget },
         {

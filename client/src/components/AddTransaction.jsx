@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { api } from "../api/axios";
 import {
   Box,
   TextField,
@@ -24,7 +24,7 @@ const AddTransaction = ({ addTransaction }) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.post(
+      const res = await api.post(
         "http://localhost:5000/api/transactions",
         { type, amount, category },
         { headers: { Authorization: `Bearer ${token}` } }

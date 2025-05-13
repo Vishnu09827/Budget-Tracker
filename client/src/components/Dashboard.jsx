@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { api } from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import ExpenseChart from "./ExpenseChart";
 import BudgetManager from "./BudgetManager";
@@ -37,11 +37,11 @@ const Dashboard = () => {
     const fetchTransactionsAndBudget = async () => {
       try {
         const token = localStorage.getItem("token");
-        const transactionRes = await axios.get(
+        const transactionRes = await api.get(
           `http://localhost:5000/api/transactions?page=${page}&category=${categoryFilter}&amount=${amountFilter}&date=${dateFilter}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
-        const budgetRes = await axios.get("http://localhost:5000/api/budget", {
+        const budgetRes = await api.get("http://localhost:5000/api/budget", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setTransactions(transactionRes.data.transactions);
@@ -77,7 +77,7 @@ const Dashboard = () => {
   const handleUpdateTransaction = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.put(
+      const res = await api.put(
         `http://localhost:5000/api/transactions/${editingTransaction}`,
         editFormData,
         { headers: { Authorization: `Bearer ${token}` } }
@@ -94,7 +94,7 @@ const Dashboard = () => {
   const handleDeleteTransaction = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/transactions/${id}`, {
+      await api.delete(`http://localhost:5000/api/transactions/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTransactions(transactions.filter((t) => t._id !== id));
