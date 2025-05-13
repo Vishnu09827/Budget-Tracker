@@ -25,7 +25,7 @@ const AddTransaction = ({ addTransaction }) => {
     try {
       const token = localStorage.getItem("token");
       const res = await api.post(
-        "http://localhost:5000/api/transactions",
+        "transactions",
         { type, amount, category },
         { headers: { Authorization: `Bearer ${token}` } }
       );

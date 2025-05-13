@@ -21,7 +21,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await api.post("http://localhost:5000/api/auth/register", {
+      await api.post("auth/register", {
         username,
         password,
       });

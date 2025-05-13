@@ -30,7 +30,7 @@ const BudgetManager = ({ setBudget, budget }) => {
     try {
       const token = localStorage.getItem("token");
       const res = await api.post(
-        "http://localhost:5000/api/budget",
+        "budget",
         { amount: newBudget },
         {
           headers: { Authorization: `Bearer ${token}` },

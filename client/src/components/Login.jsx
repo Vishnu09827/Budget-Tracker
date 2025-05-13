@@ -20,7 +20,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await api.post("http://localhost:5000/api/auth/login", {
+      const res = await api.post("auth/login", {
         username,
         password,
       });
