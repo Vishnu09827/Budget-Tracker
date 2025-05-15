@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Register from "./components/Register";
 import "./App.css";
 import Home from "./components/Home";
+import API from "./components/Api";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/api" element={<API/>}/>
       </Routes>
     </Router>
   );
